@@ -14,9 +14,10 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-var spelerX = 600; // x-positie van speler
-var spelerY = 600; // y-positie van speler
-
+var spelerX = 600 ; // x-positie van speler
+var spelerY = 600 ; // y-positie van speler
+var vijandX = 1000 ;
+var vijandY = 400 ;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -53,16 +54,18 @@ var tekenAlles = function () {
   // achtergrond
 
   // vijand
+  fill("red")
+  ellipse(vijandX, vijandY, 100, 100)
+  rect(vijandX, vijandy - 5, 100, 50)
 
   // kogel
 
   // speler
-  fill("white");
-  rect(spelerX - 25, spelerY - 25, 50, 50);
+  fill("yellow");
+  ellipse(spelerX, spelerY, 100, 100);
   fill("black");
-  ellipse(spelerX, spelerY, 10, 10);
-
-  // punten en health
+  ellipse(spelerX + 8, spelerY - 7, 10, 10);
+  ellipse(spelerX - 8, spelerY - 7, 10, 10);  // punten en health
 
 };
 
