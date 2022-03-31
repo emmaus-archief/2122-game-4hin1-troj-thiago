@@ -54,10 +54,19 @@ var tekenAlles = function () {
   // achtergrond
 
   // vijand
-  fill("red")
-  ellipse(vijandX, vijandY, 100, 100)
-  rect(vijandX, vijandy - 5, 100, 50)
-
+  noStroke()
+  fill("red");
+  ellipse(vijandX, vijandY, 100, 100);
+  rect(vijandX - 49, vijandY + 6, 100, 50);
+  fill("black");
+  ellipse(vijandX + 15, vijandY - 7, 15, 15);
+  ellipse(vijandX - 15, vijandY - 7, 15, 15);
+  ellipse(vijandX, vijandY, 25, 25);
+  ellipse(vijandX, vijandY, 25, 25);
+  ellipse(vijandX, vijandY, 25, 25);
+  ellipse(vijandX, vijandY, 25, 25);
+  
+  
   // kogel
 
   // speler
