@@ -57,14 +57,13 @@ var tekenAlles = function () {
   noStroke()
   fill("red");
   ellipse(vijandX, vijandY, 100, 100);
+  ellipse(vijandX - 24, vijandY + 50, 45, 40);
+  ellipse(vijandX, vijandY + 50, 45, 40);
+  ellipse(vijandX + 27, vijandY + 50, 45, 40);
   rect(vijandX - 49, vijandY + 6, 100, 50);
   fill("black");
   ellipse(vijandX + 15, vijandY - 7, 15, 15);
   ellipse(vijandX - 15, vijandY - 7, 15, 15);
-  ellipse(vijandX, vijandY, 25, 25);
-  ellipse(vijandX, vijandY, 25, 25);
-  ellipse(vijandX, vijandY, 25, 25);
-  ellipse(vijandX, vijandY, 25, 25);
   
   
   // kogel
