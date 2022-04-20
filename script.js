@@ -18,9 +18,10 @@ var spelerX = 600 ; // x-positie van speler
 var spelerY = 600 ; // y-positie van speler
 var vijandX = 1000 ;
 var vijandY = 400 ;
-var RIGHT_ARROW = 60;
-var LEFT_ARROW = 61;
-var DOWN_ARROW = 62;
+var RIGHT_ARROW = 39 ;
+var LEFT_ARROW = 37 ;
+var DOWN_ARROW = 40 ;
+var UP_ARROW = 38 ;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -30,16 +31,16 @@ var DOWN_ARROW = 62;
  */
 var beweegAlles = function () {
   
-  if (KeyIsPressed(RIGHT_ARROW)) {
+  if (keyIsDown(RIGHT_ARROW)) {
     spelerX = spelerX + 3;
   }
-  if (KeyIsPressed(LEFT_ARROW)) {
+  if (keyIsDown(LEFT_ARROW)) {
     spelerX = spelerX - 3;
   }
-  if (KeyIsPressed(DOWN_ARROW)) {
+  if (keyIsDown(DOWN_ARROW)) {
     spelerY = spelerY + 3;
   }
-  if (KeyIsPressed(UP_ARROW)) {
+  if (keyIsDown(UP_ARROW)) {
     spelerY = spelerY - 3;
   }
   // vijand
@@ -53,7 +54,12 @@ var beweegAlles = function () {
  * Updatet globale variabelen punten en health
  */
 var verwerkBotsing = function () {
-
+  if (spelerX > vijandX - 100 &&
+      spelerX < vijandX + 100 &&
+      spelerY > vijandY - 100 &&
+      spelerY < vijandY + 120) {
+       console.log("botsing");
+      }
 
   // botsing speler tegen vijand
 
@@ -62,13 +68,14 @@ var verwerkBotsing = function () {
   // update punten en health
 
 
-};a
+};
 /**
  * Tekent spelscherm
  */
 var tekenAlles = function () {
   // achtergrond
-
+  fill("blue")
+  rect(0, 0, 1280, 720)
   // vijand
   noStroke()
   fill("red");
@@ -80,6 +87,20 @@ var tekenAlles = function () {
   fill("black");
   ellipse(vijandX + 15, vijandY - 7, 15, 15);
   ellipse(vijandX - 15, vijandY - 7, 15, 15);
+  var move = function (){
+    if (spelerX < vijandX){
+      vijandX = vijandX - 1;
+    }
+    if (spelerX > vijandX){
+      vijandX = vijandX + 1;
+    }
+    if (spelerY < vijandY){
+      vijandY = vijandY - 1;
+    }
+    if (spelerY > vijandY){
+      vijandY = vijandY + 1;
+    }
+  }
   
   
   
@@ -91,7 +112,7 @@ var tekenAlles = function () {
   fill("black");
   ellipse(spelerX + 8, spelerY - 7, 10, 10);
   ellipse(spelerX - 8, spelerY - 7, 10, 10);  // punten en health
-
+move();
 };
 
 /**
@@ -99,8 +120,10 @@ var tekenAlles = function () {
  * anders return false
  */
 var checkGameOver = function () {
-  // check of HP 0 is , of tijd op is, of ...
-  return false;
+  if (console.log("botsing")) {
+    return true;
+  }
+  else {return false;}
 };
 
 /* ********************************************* */
@@ -135,7 +158,7 @@ function draw() {
     }
   }
   if (spelStatus === GAMEOVER) {
-    // teken game-over scherm
+    
 
   }
 }
