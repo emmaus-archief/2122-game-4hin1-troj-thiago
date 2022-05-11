@@ -22,6 +22,8 @@ var RIGHT_ARROW = 39 ;
 var LEFT_ARROW = 37 ;
 var DOWN_ARROW = 40 ;
 var UP_ARROW = 38 ;
+var punten = 0 ;
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -66,6 +68,19 @@ var verwerkBotsing = function () {
   // botsing kogel tegen vijand
 
   // update punten en health
+  function checkPunten() {
+     if (spelerX > puntX - 10 &&
+        spelerX < puntX + 10 &&
+        spelerY > puntY - 10 &&
+        spelerY < puntY + 10) {
+        var punten = punten + 1;
+        return punten;
+        
+        }
+      
+       
+    
+  }
 
 
 };
@@ -120,7 +135,7 @@ move();
  * anders return false
  */
 var checkGameOver = function () {
-  if (console.log("botsing")) {
+  if (verwerkBotsing === true) {
     return true;
   }
   else {return false;}
@@ -153,11 +168,12 @@ function draw() {
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
-    if (checkGameOver()) {
-      spelStatus = GAMEOVER;
+    if (checkGameOver === true) {
+      background('black');
     }
   }
   if (spelStatus === GAMEOVER) {
+  
     
 
   }
