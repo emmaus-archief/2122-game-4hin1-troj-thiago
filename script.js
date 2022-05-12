@@ -23,7 +23,8 @@ var LEFT_ARROW = 37 ;
 var DOWN_ARROW = 40 ;
 var UP_ARROW = 38 ;
 var punten = 0 ;
-
+var puntX = 800 ;
+var puntY = 800 ;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -49,6 +50,7 @@ var beweegAlles = function () {
 
   // kogel
 };
+
 
 /**
  * Checkt botsingen
@@ -127,7 +129,11 @@ var tekenAlles = function () {
   fill("black");
   ellipse(spelerX + 8, spelerY - 7, 10, 10);
   ellipse(spelerX - 8, spelerY - 7, 10, 10);  // punten en health
-move();
+  
+  fill("orange");
+  ellipse(puntX, puntY, 20, 20);
+  
+  move();
 };
 
 /**
@@ -169,11 +175,11 @@ function draw() {
     verwerkBotsing();
     tekenAlles();
     if (checkGameOver === true) {
-      background('black');
+    spelStatus === GAMEOVER
     }
   }
   if (spelStatus === GAMEOVER) {
-  
+   console.log("gameover")  
     
 
   }
