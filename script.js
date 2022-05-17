@@ -33,7 +33,7 @@ var puntY = 800 ;
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
 var beweegAlles = function () {
-  
+  // speler
   if (keyIsDown(RIGHT_ARROW)) {
     spelerX = spelerX + 3;
   }
@@ -46,8 +46,31 @@ var beweegAlles = function () {
   if (keyIsDown(UP_ARROW)) {
     spelerY = spelerY - 3;
   }
-  // vijand
 
+  //muur
+  if (spelerX < 0 +100) {
+    spelerX = 100;}
+    if (spelerX > 0+ 1200){
+      spelerX=1200;}
+    if(spelerY<0+80){
+      spelerY=80;}
+    if(spelerY>0+680){
+      spelerY=680;}
+    
+  
+  // vijand
+    if (spelerX < vijandX){
+      vijandX = vijandX - 1;
+    }
+    if (spelerX > vijandX){
+      vijandX = vijandX + 1;
+    }
+    if (spelerY < vijandY){
+      vijandY = vijandY - 1;
+    }
+    if (spelerY > vijandY){
+      vijandY = vijandY + 1;
+    }
   // kogel
 };
 
@@ -58,6 +81,7 @@ var beweegAlles = function () {
  * Updatet globale variabelen punten en health
  */
 var verwerkBotsing = function () {
+  // botsing speler tegen vijand
   if (spelerX > vijandX - 100 &&
       spelerX < vijandX + 100 &&
       spelerY > vijandY - 100 &&
@@ -65,7 +89,7 @@ var verwerkBotsing = function () {
        console.log("botsing");
       }
 
-  // botsing speler tegen vijand
+
 
   // botsing kogel tegen vijand
 
@@ -104,20 +128,7 @@ var tekenAlles = function () {
   fill("black");
   ellipse(vijandX + 15, vijandY - 7, 15, 15);
   ellipse(vijandX - 15, vijandY - 7, 15, 15);
-  var move = function (){
-    if (spelerX < vijandX){
-      vijandX = vijandX - 1;
-    }
-    if (spelerX > vijandX){
-      vijandX = vijandX + 1;
-    }
-    if (spelerY < vijandY){
-      vijandY = vijandY - 1;
-    }
-    if (spelerY > vijandY){
-      vijandY = vijandY + 1;
-    }
-  }
+  
   
   
   
@@ -132,8 +143,8 @@ var tekenAlles = function () {
   
   fill("orange");
   ellipse(puntX, puntY, 20, 20);
+
   
-  move();
 };
 
 /**
