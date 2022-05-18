@@ -48,14 +48,14 @@ var beweegAlles = function () {
   }
 
   //muur
-  if (spelerX < 0 +100) {
-    spelerX = 100;}
-    if (spelerX > 0+ 1200){
-      spelerX=1200;}
-    if(spelerY<0+80){
-      spelerY=80;}
-    if(spelerY>0+680){
-      spelerY=680;}
+  if (spelerX < 0 +60) {
+    spelerX = 60;}
+    if (spelerX > 0+ 1225){
+      spelerX=1225;}
+    if(spelerY<0+60){
+      spelerY=60;}
+    if(spelerY>0+670){
+      spelerY=670;}
     
   
   // vijand
