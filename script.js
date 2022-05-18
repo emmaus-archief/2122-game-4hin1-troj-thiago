@@ -60,16 +60,16 @@ var beweegAlles = function () {
   
   // vijand
     if (spelerX < vijandX){
-      vijandX = vijandX - 1;
+      vijandX = vijandX - 1.5;
     }
     if (spelerX > vijandX){
-      vijandX = vijandX + 1;
+      vijandX = vijandX + 1.5;
     }
     if (spelerY < vijandY){
-      vijandY = vijandY - 1;
+      vijandY = vijandY - 1.5;
     }
     if (spelerY > vijandY){
-      vijandY = vijandY + 1;
+      vijandY = vijandY + 1.5;
     }
   // kogel
 };
