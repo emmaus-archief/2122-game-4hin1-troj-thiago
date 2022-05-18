@@ -138,11 +138,11 @@ var tekenAlles = function () {
   fill("yellow");
   ellipse(spelerX, spelerY, 100, 100);
   fill("black");
-  ellipse(spelerX + 8, spelerY - 7, 10, 10);
-  ellipse(spelerX - 8, spelerY - 7, 10, 10);  // punten en health
+  ellipse(spelerX + 10, spelerY - 7, 10, 10);
+  ellipse(spelerX - 10, spelerY - 7, 10, 10);  // punten en health
   
   fill("orange");
-  ellipse(puntX, puntY, 20, 20);
+  ellipse(800, 800, 100, 100);
 
   
 };
@@ -186,7 +186,7 @@ function draw() {
     verwerkBotsing();
     tekenAlles();
     if (checkGameOver === true) {
-    spelStatus === GAMEOVER
+    spelStatus = GAMEOVER
     }
   }
   if (spelStatus === GAMEOVER) {
@@ -195,3 +195,5 @@ function draw() {
 
   }
 }
+
+
