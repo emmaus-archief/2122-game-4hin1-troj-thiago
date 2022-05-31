@@ -94,21 +94,6 @@ var verwerkBotsing = function () {
   // botsing kogel tegen vijand
 
   // update punten en health
-  function checkPunten() {
-     if (spelerX > puntX - 10 &&
-        spelerX < puntX + 10 &&
-        spelerY > puntY - 10 &&
-        spelerY < puntY + 10) {
-        var punten = punten + 1;
-        return punten;
-        
-        }
-      
-       
-    
-  }
-
-
 };
 /**
  * Tekent spelscherm
@@ -155,7 +140,7 @@ var checkGameOver = function () {
   if (verwerkBotsing === true) {
     return true;
   }
-  else {return false;}
+  return false;
 };
 
 /* ********************************************* */
@@ -185,12 +170,12 @@ function draw() {
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
-    if (checkGameOver === true) {
+    if (checkGameOver()) {
     spelStatus = GAMEOVER
     }
   }
   if (spelStatus === GAMEOVER) {
-   console.log("gameover")  
+   console.log("gameover");  
     
 
   }
