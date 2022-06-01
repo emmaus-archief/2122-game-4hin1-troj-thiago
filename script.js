@@ -1,21 +1,10 @@
-/* Game opdracht
-   Informatica - Emmauscollege Rotterdam
-   Template voor een game in JavaScript met de p5 library
-
-   Begin met dit template voor je game opdracht,
-   voeg er je eigen code aan toe.
- */
-
-/* ********************************************* */
-/* globale variabelen die je gebruikt in je game */
-/* ********************************************* */
-
+// Globale Variabelen
 const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-var spelerX = 600 ; // x-positie van speler
-var spelerY = 600 ; // y-positie van speler
+var spelerX = 600 ; 
+var spelerY = 600 ;
 var vijandX = 1000 ;
 var vijandY = 400 ;
 var RIGHT_ARROW = 39 ;
@@ -25,15 +14,14 @@ var UP_ARROW = 38 ;
 var punten = 0 ;
 var puntX = 800 ;
 var puntY = 800 ;
-/* ********************************************* */
-/* functies die je gebruikt in je game           */
-/* ********************************************* */
+
 
 /**
- * Updatet globale variabelen met posities van speler, vijanden en kogels
- */
+Updatet globale variabelen met posities van speler en vijand 
+*/
+
 var beweegAlles = function () {
-  // speler
+  // beweging van speler 
   if (keyIsDown(RIGHT_ARROW)) {
     spelerX = spelerX + 3;
   }
@@ -71,14 +59,11 @@ var beweegAlles = function () {
     if (spelerY > vijandY){
       vijandY = vijandY + 1.5;
     }
-  // kogel
 };
 
 
 /**
  * Checkt botsingen
- * Verwijdert neergeschoten dingen
- * Updatet globale variabelen punten en health
  */
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
@@ -88,12 +73,6 @@ var verwerkBotsing = function () {
       spelerY < vijandY + 120) {
        console.log("botsing");
       }
-
-
-
-  // botsing kogel tegen vijand
-
-  // update punten en health
 };
 /**
  * Tekent spelscherm
@@ -102,6 +81,14 @@ var tekenAlles = function () {
   // achtergrond
   fill("blue")
   rect(0, 0, 1280, 720)
+
+  //tekst
+  
+  fill("black");
+  textSize(75);
+  text("gebruik de pijlen om te bewegen", 100, 200); 
+  text("als je geraakt wordt ben je af", 100, 500);
+  
   // vijand
   noStroke()
   fill("red");
@@ -113,28 +100,21 @@ var tekenAlles = function () {
   fill("black");
   ellipse(vijandX + 15, vijandY - 7, 15, 15);
   ellipse(vijandX - 15, vijandY - 7, 15, 15);
+
   
   
-  
-  
-  // kogel
 
   // speler
   fill("yellow");
   ellipse(spelerX, spelerY, 100, 100);
   fill("black");
   ellipse(spelerX + 10, spelerY - 7, 10, 10);
-  ellipse(spelerX - 10, spelerY - 7, 10, 10);  // punten en health
-  
-  fill("orange");
-  ellipse(800, 800, 100, 100);
-
+  ellipse(spelerX - 10, spelerY - 7, 10, 10);  // 
   
 };
 
 /**
- * return true als het gameover is
- * anders return false
+ checkt of er een botsing was
  */
 var checkGameOver = function () {
   if (verwerkBotsing === true) {
@@ -143,27 +123,20 @@ var checkGameOver = function () {
   return false;
 };
 
-/* ********************************************* */
-/* setup() en draw() functies / hoofdprogramma   */
-/* ********************************************* */
+
 
 /**
  * setup
- * de code in deze functie wordt één keer uitgevoerd door
- * de p5 library, zodra het spel geladen is in de browser
  */
 function setup() {
-  // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
+  
   createCanvas(1280, 720);
 
-  // Kleur de achtergrond blauw, zodat je het kunt zien
+ 
   background('blue');
 }
-
 /**
- * draw
- * de code in deze functie wordt 50 keer per seconde
- * uitgevoerd door de p5 library, nadat de setup functie klaar is
+de uitgevoerde functie
  */
 function draw() {
   if (spelStatus === SPELEN) {
@@ -180,5 +153,3 @@ function draw() {
 
   }
 }
-
-
