@@ -46,7 +46,7 @@ var beweegAlles = function () {
       spelerY=670;}
     
   
-  // vijand
+  // Beweging van vijand
     if (spelerX < vijandX){
       vijandX = vijandX - 1.5;
     }
@@ -73,6 +73,7 @@ var verwerkBotsing = function () {
       spelerY < vijandY + 120) {
        console.log("botsing");
       }
+  
 };
 /**
  * Tekent spelscherm
@@ -89,6 +90,15 @@ var tekenAlles = function () {
   text("gebruik de pijlen om te bewegen", 100, 200); 
   text("als je geraakt wordt ben je af", 100, 500);
   
+  // speler
+  fill("yellow");
+  ellipse(spelerX, spelerY, 100, 100);
+  fill("black");
+  ellipse(spelerX + 10, spelerY - 7, 10, 10);
+  ellipse(spelerX - 10, spelerY - 7, 10, 10); 
+  
+  
+  
   // vijand
   noStroke()
   fill("red");
@@ -104,12 +114,7 @@ var tekenAlles = function () {
   
   
 
-  // speler
-  fill("yellow");
-  ellipse(spelerX, spelerY, 100, 100);
-  fill("black");
-  ellipse(spelerX + 10, spelerY - 7, 10, 10);
-  ellipse(spelerX - 10, spelerY - 7, 10, 10);  // 
+   
   
 };
 
@@ -120,7 +125,7 @@ var checkGameOver = function () {
   if (verwerkBotsing === true) {
     return true;
   }
-  return false;
+
 };
 
 
@@ -136,15 +141,15 @@ function setup() {
   background('blue');
 }
 /**
-de uitgevoerde functie
+de uitgevoerde code
  */
 function draw() {
   if (spelStatus === SPELEN) {
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
-    if (checkGameOver()) {
-    spelStatus = GAMEOVER
+    if (checkGameOver) {
+    spelStatus === GAMEOVER;
     }
   }
   if (spelStatus === GAMEOVER) {
