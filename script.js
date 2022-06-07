@@ -14,6 +14,8 @@ var UP_ARROW = 38 ;
 var punten = 0 ;
 var puntX = 800 ;
 var puntY = 800 ;
+var snelheid = 3;
+var vertraging = 0.5;
 
 
 /**
@@ -23,16 +25,16 @@ Updatet globale variabelen met posities van speler en vijand
 var beweegAlles = function () {
   // beweging van speler 
   if (keyIsDown(RIGHT_ARROW)) {
-    spelerX = spelerX + 3;
+    spelerX = spelerX + snelheid;
   }
   if (keyIsDown(LEFT_ARROW)) {
-    spelerX = spelerX - 3;
+    spelerX = spelerX - snelheid;
   }
   if (keyIsDown(DOWN_ARROW)) {
-    spelerY = spelerY + 3;
+    spelerY = spelerY + snelheid;
   }
   if (keyIsDown(UP_ARROW)) {
-    spelerY = spelerY - 3;
+    spelerY = spelerY - snelheid;
   }
 
   //muur
@@ -48,17 +50,22 @@ var beweegAlles = function () {
   
   // Beweging van vijand
     if (spelerX < vijandX){
-      vijandX = vijandX - 1.5;
+      vijandX = vijandX - snelheid * vertraging;
     }
     if (spelerX > vijandX){
-      vijandX = vijandX + 1.5;
+      vijandX = vijandX + snelheid * vertraging;
     }
     if (spelerY < vijandY){
-      vijandY = vijandY - 1.5;
+      vijandY = vijandY - snelheid * vertraging;
     }
     if (spelerY > vijandY){
-      vijandY = vijandY + 1.5;
+      vijandY = vijandY + snelheid * vertraging;
     }
+  snelheid = snelheid + 0.0005
+
+  if (vertraging < 0.70){
+    vertraging = vertraging + 0.00001
+  }
 };
 
 
@@ -69,8 +76,8 @@ var verwerkBotsing = function () {
   // botsing speler tegen vijand
   if (spelerX > vijandX - 100 &&
       spelerX < vijandX + 100 &&
-      spelerY > vijandY - 100 &&
-      spelerY < vijandY + 120) {
+      spelerY > vijandY - 95 &&
+      spelerY < vijandY + 115) {
        console.log("botsing");
       }
   
@@ -122,10 +129,16 @@ var tekenAlles = function () {
  checkt of er een botsing was
  */
 var checkGameOver = function () {
-  if (verwerkBotsing === true) {
-    return true;
-  }
-
+  if (spelerX > vijandX - 100 &&
+      spelerX < vijandX + 100 &&
+      spelerY > vijandY - 95 &&
+      spelerY < vijandY + 115);
+    {
+     (spelStatus = spelStatus + 1);
+      }
+    
+     
+  
 };
 
 
@@ -148,9 +161,7 @@ function draw() {
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
-    if (checkGameOver) {
-    spelStatus === GAMEOVER;
-    }
+    checkGameOver();
   }
   if (spelStatus === GAMEOVER) {
    console.log("gameover");  
