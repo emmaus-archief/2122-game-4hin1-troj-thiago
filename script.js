@@ -134,8 +134,8 @@ var checkGameOver = function () {
       spelerY > vijandY - 95 &&
       spelerY < vijandY + 115);
     {
-     (spelStatus = spelStatus + 1);
-      }
+     (spelStatus === spelStatus + 1);
+         }
     
      
   
@@ -157,6 +157,7 @@ function setup() {
 de uitgevoerde code
  */
 function draw() {
+  (spelStatus + 1 === GAMEOVER)
   if (spelStatus === SPELEN) {
     beweegAlles();
     verwerkBotsing();
