@@ -72,6 +72,8 @@ var beweegAlles = function () {
 /**
  * Checkt botsingen
  */
+
+  
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
   if (spelerX > vijandX - 100 &&
@@ -80,7 +82,12 @@ var verwerkBotsing = function () {
       spelerY < vijandY + 115) {
        console.log("botsing");
       }
-  
+  if (spelerX < vijandX - 100 &&
+      spelerX > vijandX + 100 &&
+      spelerY < vijandY - 95 &&
+      spelerY > vijandY + 115) {
+    return false;
+      }
 };
 /**
  * Tekent spelscherm
@@ -132,10 +139,15 @@ var checkGameOver = function () {
   if (spelerX > vijandX - 100 &&
       spelerX < vijandX + 100 &&
       spelerY > vijandY - 95 &&
-      spelerY < vijandY + 115);
-    {
-     (spelStatus === spelStatus + 1);
-         }
+      spelerY < vijandY + 115) {
+       return true;
+      }
+  if (spelerX < vijandX - 100 &&
+      spelerX > vijandX + 100 &&
+      spelerY < vijandY - 95 &&
+      spelerY > vijandY + 115) {
+    return false;
+      }         
     
      
   
@@ -157,12 +169,14 @@ function setup() {
 de uitgevoerde code
  */
 function draw() {
-  (spelStatus + 1 === GAMEOVER)
   if (spelStatus === SPELEN) {
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
-    checkGameOver();
+  }
+  if (checkGameOver() === true)
+  {
+    spelStatus = GAMEOVER;
   }
   if (spelStatus === GAMEOVER) {
    console.log("gameover");  
