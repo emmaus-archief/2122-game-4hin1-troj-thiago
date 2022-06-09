@@ -68,7 +68,11 @@ var beweegAlles = function () {
   }
 };
 
-
+var gameOverScherm = function (){
+  fill("black")
+  rect(0, 0, 1280, 720)
+  fill("white")
+}
 /**
  * Checkt botsingen
  */
@@ -179,7 +183,10 @@ function draw() {
     spelStatus = GAMEOVER;
   }
   if (spelStatus === GAMEOVER) {
-   console.log("gameover");  
+   console.log("gameover");
+    gameOverScherm();
+  
+    
     
 
   }
