@@ -72,7 +72,9 @@ var gameOverScherm = function (){
   fill("black")
   rect(0, 0, 1280, 720)
   fill("white")
-}
+  textSize(75);
+  text("Game Over", 400, 200);
+  text("druk op spatie om door te gaan", 100, 500);}
 /**
  * Checkt botsingen
  */
@@ -184,8 +186,13 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
    console.log("gameover");
-    gameOverScherm();
-  
+    gameOverScherm()
+    if (keyIsDown(32)){
+      spelStatus = SPELEN
+      spelerX = 600 ; 
+      spelerY = 600 ;
+      vijandX = 1000 ;
+      vijandY = 400 ;    }
     
     
 
