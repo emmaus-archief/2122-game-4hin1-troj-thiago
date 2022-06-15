@@ -16,6 +16,14 @@ var puntX = 800 ;
 var puntY = 800 ;
 var snelheid = 3;
 var vertraging = 0.5;
+var punten = 0;
+var tijd = 0;
+
+while (spelStatus === SPELEN) {
+    tijd = tijd + 1;
+    
+  };
+  console.log("tijd")
 
 
 /**
